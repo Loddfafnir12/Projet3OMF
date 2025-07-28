@@ -1,0 +1,417 @@
+/* CSS spécifique pour la page restaurant - restaurant.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Styles restaurant */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f6f6f6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header principal - identique à index */
+.header1 {
+    background: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header1__back {
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    color: #353535;
+    transition: color 0.3s ease;
+}
+
+.header1__back:hover {
+    color: #9356dc;
+}
+
+.header1__title {
+    display: block;
+}
+
+.header1__title a {
+    color: inherit;
+}
+
+.header1__image {
+    height: 30px;
+}
+
+/* Sous-header avec image */
+.subheader {
+    width: 100%;
+    height: 275px;
+    overflow: hidden;
+}
+
+.subheader__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Container principal */
+.container {
+    position: relative;
+    margin-top: -50px;
+    background-color: #f6f6f6;
+    border-radius: 40px 40px 0 0;
+    padding: 32px 20px 0;
+}
+
+/* Section principale */
+.main--1 {
+    max-width: 1055px;
+    margin: 0 auto;
+}
+
+.main--1__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.main--1__content__title {
+    font-family: 'Shrikhand', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    color: #333;
+}
+
+.main--1__content__heart {
+    position: relative;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.main--1__content__heart .far {
+    color: #333;
+    transition: opacity 0.3s ease;
+}
+
+.main--1__content__heart .fas {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    background: linear-gradient(135deg, #9356dc, #ff79da);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: opacity 0.3s ease;
+}
+
+.main--1__content__heart:hover .far {
+    opacity: 0;
+}
+
+.main--1__content__heart:hover .fas {
+    opacity: 1;
+    animation: heartBeat 0.6s ease;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Section des menus */
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.box__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.box__menu__title {
+    font-weight: 300;
+    font-size: 16px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.box__menu__title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #99e2d0;
+}
+
+/* Éléments de menu */
+.box__element {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.box__element:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.box__contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.box__contents__left {
+    flex: 1;
+    min-width: 0;
+}
+
+.box__contents__title {
+    font-size: 18px;
+    font: bold;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.box__contents__inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box__contents__inline__subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 15px;
+}
+
+.box__contents__inline__price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #353535;
+    white-space: nowrap;
+}
+
+.box__contents__right {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.box__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 77px;
+    background-color: #99e2d0;
+    border-radius: 0 15px 15px 0;
+    margin: -15px -15px -15px 15px;
+    font-size: 20px;
+    color: #fff;
+    transform: rotate(-360deg);
+    transition: transform 0.3s ease;
+}
+
+.box__element:hover .box__contents__right {
+    width: 59px;
+}
+
+.box__element:hover .box__check {
+    transform: rotate(0deg);
+}
+
+/* Animations d'apparition */
+.anim-1 { animation-delay: 0.1s; }
+.anim-2 { animation-delay: 0.2s; }
+.anim-3 { animation-delay: 0.3s; }
+.anim-4 { animation-delay: 0.4s; }
+.anim-5 { animation-delay: 0.5s; }
+.anim-6 { animation-delay: 0.6s; }
+.anim-7 { animation-delay: 0.7s; }
+.anim-8 { animation-delay: 0.8s; }
+.anim-9 { animation-delay: 0.9s; }
+.anim-10 { animation-delay: 1.0s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bouton de commande - identique à l'index */
+.button {
+    background: linear-gradient(135deg, #ff79da, #9356dc);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    display: block;
+    margin: 40px auto 50px;
+}
+
+.button:hover {
+    opacity: 0.9;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.button__text {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Footer - identique à l'index */
+.footer {
+    background: #353535;
+    color: white;
+    padding: 22px 25px;
+}
+
+.footer__title {
+    font-family: 'Shrikhand', cursive;
+    font-size: 18px;
+    margin-bottom: 16px;
+    display: block;
+    color: white;
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.footer__content__subtitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer__content__subtitle i {
+    width: 15px;
+    font-size: 13px;
+}
+
+.footer__content__link,
+.footer__content {
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer__content__link:hover,
+.footer__content:hover {
+    color: #9356dc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header1 {
+        padding: 15px;
+    }
+    
+    .header1__title {
+        font-size: 25px;
+    }
+    
+    .subheader {
+        height: 200px;
+    }
+    
+    .container {
+        padding: 25px 15px 0;
+        margin-top: -30px;
+    }
+    
+    .main--1__content__title {
+        font-size: 24px;
+    }
+    
+    .box__contents__title {
+        font-size: 16px;
+    }
+    
+    .box__contents__inline__subtitle {
+        font-size: 14px;
+    }
+    
+    .box__contents__inline__price {
+        font-size: 14px;
+    }
+    
+    .button {
+        margin: 30px auto 40px;
+        padding: 12px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header1__back {
+        left: 15px;
+    }
+    
+    .container {
+        padding: 20px 10px 0;
+    }
+    
+    .box__contents {
+        padding: 12px;
+    }
+    
+    .footer {
+        padding: 20px 15px;
+    }
+}
+
+/* Import des polices Google Fonts - identique à l'index */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Shrikhand&display=swap');
