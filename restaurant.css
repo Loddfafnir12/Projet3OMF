@@ -181,6 +181,7 @@ a {
     opacity: 0;
     transform: translateY(20px);
     animation: slideInUp 0.6s ease forwards;
+    position: relative;
 }
 
 .box__element:hover {
@@ -193,11 +194,14 @@ a {
     justify-content: space-between;
     padding: 15px;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .box__contents__left {
     flex: 1;
     min-width: 0;
+    transition: margin-right 0.3s ease;
 }
 
 .box__contents__title {
@@ -235,9 +239,18 @@ a {
 }
 
 .box__contents__right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 0;
-    overflow: hidden;
+    background-color: #99e2d0;
     transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 15px 15px 0;
+    overflow: hidden;
 }
 
 .box__check {
@@ -245,14 +258,11 @@ a {
     align-items: center;
     justify-content: center;
     width: 59px;
-    height: 77px;
-    background-color: #99e2d0;
-    border-radius: 0 15px 15px 0;
-    margin: -15px -15px -15px 15px;
+    height: 100%;
     font-size: 20px;
     color: #fff;
-    transform: rotate(-360deg);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .box__element:hover .box__contents__right {
@@ -260,7 +270,11 @@ a {
 }
 
 .box__element:hover .box__check {
-    transform: rotate(0deg);
+    opacity: 1;
+}
+
+.box__element:hover .box__contents__left {
+    margin-right: 59px;
 }
 
 /* Animations d'apparition */

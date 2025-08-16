@@ -162,7 +162,7 @@ a {
 .section--fonctionnement {
     background: white;
     padding: 50px 20px;
-    margin: 0 -20px 60px;
+    margin: 0 -20px 0px;
 }
 
 /* Steps */
@@ -378,7 +378,7 @@ a {
     
     .section--fonctionnement {
         padding: 50px 40px;
-        margin: 0 -40px 60px;
+        margin: 0 -40px 0px;
     }
     
     .section--restaurants {
@@ -406,7 +406,7 @@ a {
     
     .section--fonctionnement,
     .section--restaurants {
-        margin: 0 0 60px;
+        margin: 0 0 0px;
         padding: 50px;
     }
     
