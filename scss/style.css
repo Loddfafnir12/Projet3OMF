@@ -250,10 +250,6 @@ a {
           transform: translateY(-2px);
 }
 
-.main {
-  padding: 0 20px;
-}
-
 @media (min-width: 768px) {
   .main {
     padding: 0 40px;
@@ -262,9 +258,9 @@ a {
 
 @media (min-width: 1024px) {
   .main {
-    max-width: 1200px;
+    max-width: 4100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0px;
   }
 }
 
@@ -302,6 +298,13 @@ a {
     margin: 0 0 0px;
     padding: 50px;
   }
+  .section--fonctionnement .section__title {
+    margin-bottom: 40px;
+  }
+  .section--fonctionnement::after {
+    content: '';
+    display: block;
+  }
 }
 
 .section--restaurants {
@@ -324,6 +327,26 @@ a {
   }
 }
 
+@media (min-width: 1024px) {
+  .section--fonctionnement {
+    text-align: center;
+  }
+  .section--fonctionnement .section__title {
+    text-align: left;
+  }
+  .section--fonctionnement .step {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 320px;
+    margin-right: 20px;
+    vertical-align: top;
+  }
+  .section--fonctionnement .step:last-child {
+    margin-right: 0;
+  }
+}
+
 .step {
   background: #f6f6f6;
   border-radius: 20px;
@@ -338,6 +361,13 @@ a {
 .step:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
+}
+
+@media (min-width: 1024px) {
+  .step {
+    margin-bottom: 0;
+    max-width: 320px;
+  }
 }
 
 .step:hover {
@@ -361,7 +391,7 @@ a {
 
 @media (min-width: 1024px) {
   .step__content {
-    max-width: 350px;
+    padding: 30px 25px;
   }
 }
 
@@ -575,10 +605,10 @@ a {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
-    gap: 30px;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    gap: 15px;
   }
 }
 
@@ -616,7 +646,6 @@ a {
   gap: 7px;
   color: white;
   font-size: 16px;
-  font-weight: 500;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }

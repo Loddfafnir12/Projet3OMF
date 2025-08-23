@@ -29,7 +29,7 @@ $box-shadow-inset: inset 1px -3px 6px 0px #00000052;
 $gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
 $gradient-secondary: linear-gradient(135deg, $secondary-color, $primary-color);
 
-// Breakpoints mobile-first
+// Breakpoints 
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
@@ -69,7 +69,7 @@ $breakpoint-desktop: 1024px;
     }
 }
 
-// Media queries mixins mobile-first
+// Media queries mixins
 @mixin tablet {
     @media (min-width: $breakpoint-tablet) {
         @content;
@@ -186,7 +186,7 @@ a {
     }
 }
 
-// Section hero - Mobile first
+// Section hero 
 .hero {
     background: $background-gray;
     padding: 40px 20px 60px;
@@ -230,9 +230,9 @@ a {
     @include button-style();
 }
 
-// Main content - Mobile first
+// Main content 
 .main {
-    padding: 0 20px;
+    
 
     // Tablet
     @include tablet {
@@ -241,13 +241,13 @@ a {
 
     // Desktop
     @include desktop {
-        max-width: 1200px;
+        max-width: 4100px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0px;
     }
 }
 
-// Sections - Mobile first
+// Sections 
 .section {
     margin-bottom: 60px;
 
@@ -261,7 +261,7 @@ a {
         }
     }
 
-    // Section fonctionnement - Mobile first
+    // Section fonctionnement
     &--fonctionnement {
         background: $white;
         padding: 50px 20px;
@@ -273,14 +273,24 @@ a {
             margin: 0 -40px 0px;
         }
 
-        // Desktop
+        // Desktop - Conteneur flex pour les étapes
         @include desktop {
             margin: 0 0 0px;
             padding: 50px;
+            
+            .section__title {
+                margin-bottom: 40px;
+            }
+            
+            // Créer un conteneur flex virtuel pour les steps
+            &::after {
+                content: '';
+                display: block;
+            }
         }
     }
 
-    // Section restaurants - Mobile first
+    // Section restaurants 
     &--restaurants {
         background: $background-gray;
         padding: 50px 20px;
@@ -300,7 +310,29 @@ a {
     }
 }
 
-// Steps - Mobile first
+// Steps container - Nouveau sélecteur pour desktop
+.section--fonctionnement {
+    @include desktop {
+        text-align: center;
+        
+        .section__title {
+            text-align: left;
+        }
+        
+        .step {
+            display: inline-flex;
+            width: 320px;
+            margin-right: 20px;
+            vertical-align: top;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+// Steps
 .step {
     background: $background-gray;
     border-radius: $border-radius-step;
@@ -309,6 +341,12 @@ a {
     position: relative;
     @include transition();
     @include hover-transform();
+
+    // Desktop - étapes côte à côte
+    @include desktop {
+        margin-bottom: 0;
+        max-width: 320px;
+    }
 
     &:hover {
         background: #f5edff;
@@ -324,9 +362,9 @@ a {
         padding: 25px 20px;
         gap: 20px;
 
-        // Desktop - limiter la largeur
+        // Desktop - ajuster le padding
         @include desktop {
-            max-width: 350px;
+            padding: 30px 25px;
         }
     }
 
@@ -356,7 +394,7 @@ a {
     }
 }
 
-// Transform container - Mobile first
+// Transform container
 .transform {
     display: flex;
     flex-direction: column;
@@ -375,7 +413,7 @@ a {
     }
 }
 
-// Cards restaurant - Mobile first
+// Cards restaurant
 .resto {
     background: $white;
     border-radius: $border-radius;
@@ -505,8 +543,8 @@ a {
         padding: 40px 50px;
         display: flex;
         justify-content: flex-end;
-        gap: 30px;
         align-items: center;
+        gap: 15px;
     }
 
     &__title {
@@ -533,7 +571,6 @@ a {
         gap: 7px;
         color: $white;
         font-size: 16px;
-        font-weight: 500;
         @include transition(color);
 
         // Desktop - layout horizontal à gauche
