@@ -252,7 +252,7 @@ a {
 
 @media (min-width: 768px) {
   .main {
-    padding: 0 40px;
+    padding: 0 0px;
   }
 }
 
@@ -271,6 +271,7 @@ a {
 .section__title {
   font-size: 24px;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 25px;
 }
 
@@ -283,68 +284,125 @@ a {
 .section--fonctionnement {
   background: white;
   padding: 50px 20px;
-  margin: 0 -20px 0px;
 }
 
 @media (min-width: 768px) {
   .section--fonctionnement {
     padding: 50px 40px;
-    margin: 0 -40px 0px;
   }
 }
 
 @media (min-width: 1024px) {
   .section--fonctionnement {
-    margin: 0 0 0px;
-    padding: 50px;
+    padding: 30px 50px;
   }
-  .section--fonctionnement .section__title {
-    margin-bottom: 40px;
+}
+
+.section--fonctionnement .section__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: left;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .section--fonctionnement .section__container {
+    max-width: 1024px;
+    margin: 0 auto;
   }
-  .section--fonctionnement::after {
-    content: '';
-    display: block;
+}
+
+.section--fonctionnement .section__title {
+  text-align: left;
+  margin-left: 12px;
+}
+
+.section--fonctionnement .step__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 1024px;
+}
+
+@media (min-width: 1024px) {
+  .section--fonctionnement .step__container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
+}
+
+.section--fonctionnement .step {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 320px;
+          flex: 0 0 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 72px;
 }
 
 .section--restaurants {
   background: #f6f6f6;
   padding: 50px 20px;
-  margin: 0 -20px;
 }
 
 @media (min-width: 768px) {
   .section--restaurants {
     padding: 50px 40px;
-    margin: 0 -40px;
   }
 }
 
 @media (min-width: 1024px) {
   .section--restaurants {
-    margin: 0 0 0px;
     padding: 50px;
   }
 }
 
+.section--restaurants .section__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: left;
+  gap: 40px;
+}
+
 @media (min-width: 1024px) {
-  .section--fonctionnement {
-    text-align: center;
+  .section--restaurants .section__container {
+    max-width: 1024px;
+    margin: 0 auto;
   }
-  .section--fonctionnement .section__title {
-    text-align: left;
-  }
-  .section--fonctionnement .step {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    width: 320px;
-    margin-right: 20px;
-    vertical-align: top;
-  }
-  .section--fonctionnement .step:last-child {
-    margin-right: 0;
-  }
+}
+
+.section--restaurants .section__title {
+  text-align: left;
+  margin-left: 0;
 }
 
 .step {
@@ -366,7 +424,7 @@ a {
 @media (min-width: 1024px) {
   .step {
     margin-bottom: 0;
-    max-width: 320px;
+    max-width: 280px;
   }
 }
 
@@ -438,21 +496,22 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .transform {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    gap: 25px;
-  }
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .transform {
-    gap: 30px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 460px 460px;
+        grid-template-columns: 460px 460px;
+    gap: 25px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -465,6 +524,8 @@ a {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   position: relative;
+  max-width: 490px;
+  width: 100%;
 }
 
 .resto:hover {
@@ -475,15 +536,9 @@ a {
 }
 
 .resto__image {
-  height: 175px;
+  height: 200px;
   overflow: hidden;
   position: relative;
-}
-
-@media (min-width: 768px) {
-  .resto__image {
-    height: 200px;
-  }
 }
 
 .resto__image img {

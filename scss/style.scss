@@ -236,7 +236,7 @@ a {
 
     // Tablet
     @include tablet {
-        padding: 0 40px;
+        padding: 0 0px;
     }
 
     // Desktop
@@ -249,87 +249,114 @@ a {
 
 // Sections 
 .section {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 
-    &__title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 25px;
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 25px;
 
-        @include tablet {
-            font-size: 26px;
-        }
+    @include tablet {
+      font-size: 26px;
     }
+  }
+ 
+// SECTION FONCTIONNEMENT
+&--fonctionnement {
+  background: $white;
+  padding: 50px 20px;
 
-    // Section fonctionnement
-    &--fonctionnement {
-        background: $white;
-        padding: 50px 20px;
-        margin: 0 -20px 0px;
+  @include tablet {
+    padding: 50px 40px;
+  }
 
-        // Tablet
-        @include tablet {
-            padding: 50px 40px;
-            margin: 0 -40px 0px;
-        }
+  @include desktop {
+    padding: 30px 50px;
+  }
 
-        // Desktop - Conteneur flex pour les étapes
-        @include desktop {
-            margin: 0 0 0px;
-            padding: 50px;
-            
-            .section__title {
-                margin-bottom: 40px;
-            }
-            
-            // Créer un conteneur flex virtuel pour les steps
-            &::after {
-                content: '';
-                display: block;
-            }
-        }
+  .section__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;           
+    gap: 40px;
+
+    // Desktop seulement - alignement spécifique
+    @include desktop {
+      max-width: 1024px;
+      margin: 0 auto;
     }
+  }
 
-    // Section restaurants 
-    &--restaurants {
-        background: $background-gray;
-        padding: 50px 20px;
-        margin: 0 -20px;
+  // Le titre
+  .section__title {
+    text-align: left;         
+    margin-left: 12px;          
 
-        // Tablet
-        @include tablet {
-            padding: 50px 40px;
-            margin: 0 -40px;
-        }
+  }
 
-        // Desktop
-        @include desktop {
-            margin: 0 0 0px;
-            padding: 50px;
-        }
+  // Steps container
+  .step__container {
+    display: flex;
+    flex-direction: column;     
+    gap: 30px;
+    width: 100%;
+    max-width: 1024px;
+
+    // Desktop - mode row avec space-around
+    @include desktop {
+      flex-direction: row;      
+      justify-content: space-around;
+      flex-wrap: wrap;
     }
+  }
+
+  // Step individuel
+  .step {
+    flex: 0 0 320px;
+    display: flex;
+    max-height: 72px;
+  }
 }
 
-// Steps container - Nouveau sélecteur pour desktop
-.section--fonctionnement {
+  // SECTION RESTAURANTS
+&--restaurants {
+  background: $background-gray;
+  padding: 50px 20px;
+
+  @include tablet {
+    padding: 50px 40px;
+  }
+
+  @include desktop {
+    padding: 50px;
+  }
+
+  
+  .section__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;     
+    text-align: left;            
+    gap: 40px;
+
+    // Desktop seulement - alignement spécifique
     @include desktop {
-        text-align: center;
-        
-        .section__title {
-            text-align: left;
-        }
-        
-        .step {
-            display: inline-flex;
-            width: 320px;
-            margin-right: 20px;
-            vertical-align: top;
-            
-            &:last-child {
-                margin-right: 0;
-            }
-        }
+      max-width: 1024px;
+      margin: 0 auto;
     }
+  }
+
+  // Le titre restaurants - même alignement que fonctionnement
+  .section__title {
+    text-align: left;            
+    margin-left: 0;              
+
+    
+   
+  }
+}
 }
 
 // Steps
@@ -345,7 +372,7 @@ a {
     // Desktop - étapes côte à côte
     @include desktop {
         margin-bottom: 0;
-        max-width: 320px;
+        max-width: 280px;
     }
 
     &:hover {
@@ -399,20 +426,18 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; // Centre les cards en mobile
+    width: 100%;
 
-    // Tablet et plus - Grid 2 colonnes
-    @include tablet {
+    // Grid 2 colonnes pour Desktop
+    @include desktop() {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 460px 460px;
         gap: 25px;
+        justify-content: center; // Centre la grille elle-même
     }
 
-    // Desktop - améliorer l'espacement
-    @include desktop {
-        gap: 30px;
-    }
 }
-
 // Cards restaurant
 .resto {
     background: $white;
@@ -421,6 +446,8 @@ a {
     box-shadow: $box-shadow-medium;
     @include transition();
     position: relative;
+    max-width: 490px;
+    width: 100%;
 
     &:hover {
         transform: translateY(-5px);
@@ -428,14 +455,9 @@ a {
     }
 
     &__image {
-        height: 175px;
+        height: 200px;
         overflow: hidden;
         position: relative;
-
-        // Tablet et plus - hauteur plus grande
-        @include tablet {
-            height: 200px;
-        }
 
         img {
             width: 100%;
@@ -526,6 +548,9 @@ a {
         }
     }
 }
+
+
+
 
 // Footer - Mobile first
 .footer {
