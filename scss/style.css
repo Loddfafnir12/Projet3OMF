@@ -264,10 +264,6 @@ a {
   }
 }
 
-.section {
-  margin-bottom: 60px;
-}
-
 .section__title {
   font-size: 24px;
   font-weight: 700;
@@ -310,7 +306,7 @@ a {
       -ms-flex-align: start;
           align-items: flex-start;
   text-align: left;
-  gap: 40px;
+  gap: 20px;
 }
 
 @media (min-width: 1024px) {
@@ -333,7 +329,7 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   width: 100%;
   max-width: 1024px;
 }
