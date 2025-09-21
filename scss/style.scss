@@ -593,9 +593,7 @@ a {
         display: flex;
         flex-direction: column;
         gap: 7px;
-        color: $white;
         font-size: 16px;
-        @include transition(color);
 
         // Desktop - layout horizontal à gauche
         @include desktop {
@@ -603,10 +601,6 @@ a {
             gap: 30px;
             flex-wrap: wrap;
             order: 1;
-        }
-
-        &:hover {
-            color: $primary-color;
         }
 
         &__subtitle {
@@ -617,17 +611,24 @@ a {
             i {
                 width: 15px;
                 font-size: 13px;
+                color: $white;
+                @include transition(color);
             }
-        }
 
-        &__link {
-            color: $white;
-            font-size: 16px;
-            @include transition(color);
+            a {
+                color: $white;
+                font-size: 16px;
+                @include transition(color);
+            }
 
+            
             &:hover {
-                color: $primary-color;
+                i,
+                a {
+                    color: $primary-color;
+                }
             }
         }
     }
+
 }
