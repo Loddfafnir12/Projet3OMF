@@ -5,6 +5,7 @@
 $primary-color: #9356dc;
 $secondary-color: #ff79da;
 $tertiary-color: #99e2d0;
+$dark-gray: #353535;
 $dark-color: #353535;
 $text-color: #333;
 $bg-color: #f6f6f6;
@@ -20,8 +21,16 @@ $shadow-strong: 0 6px 20px rgba(0, 0, 0, 0.15);
 $shadow-button: 0 4px 10px rgba(0, 0, 0, 0.25);
 $shadow-button-hover: 0 6px 15px rgba(0, 0, 0, 0.35);
 
+$font-family-primary: 'Roboto', Arial, sans-serif;
+$font-family-secondary: 'Shrikhand', cursive;
+
 $gradient-primary: linear-gradient(135deg, $secondary-color, $primary-color);
 $font-family-primary: 'Roboto';
+
+// Breakpoints (Mobile First)
+$tablet: 481px;
+$desktop: 769px;
+$large-desktop: 1056px;
 
 // Mixins
 @mixin flex-center {
@@ -46,10 +55,20 @@ $font-family-primary: 'Roboto';
   transition: $property $duration $timing;
 }
 
-// Breakpoints (Mobile First)
-$tablet: 481px;
-$desktop: 769px;
-$large-desktop: 1056px;
+// Media queries mixins
+@mixin tablet {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
+
+
 
 // Reset
 * {
@@ -413,55 +432,83 @@ a {
   }
 }
 
-// Footer
+// Footer - Mobile first
 .footer {
-  background: $dark-color;
-  color: $white;
-  padding: 20px 15px;
-
-  @media (min-width: $desktop) {
+    background: $dark-gray;
+    color: $white;
     padding: 22px 25px;
-  }
 
-  &__title {
-    font-family: 'Shrikhand', cursive;
-    font-size: 18px;
-    margin-bottom: 16px;
-    display: block;
-    color: $white;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    color: $white;
-    font-size: 16px;
-    @include transition(color);
-
-    &:hover {
-      color: $primary-color;
+    // Tablet et plus
+    @include tablet {
+        padding: 30px 40px;
     }
 
-    &__subtitle {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      i {
-        width: 15px;
-        font-size: 13px;
-      }
+    // Desktop
+    @include desktop {
+        padding: 40px 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
     }
 
-    &__link {
-      color: $white;
-      font-size: 16px;
-      @include transition(color);
+    &__title {
+        font-family: $font-family-secondary;
+        font-size: 18px;
+        margin-bottom: 16px;
+        display: block;
 
-      &:hover {
-        color: $primary-color;
-      }
+        @include tablet {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        // Desktop - titre à droite, pas de marge
+        @include desktop {
+            order: 2;
+            margin-bottom: 0;
+        }
     }
-  }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        color: $white;
+        font-size: 16px;
+        @include transition(color);
+
+        // Desktop - layout horizontal à gauche
+        @include desktop {
+            flex-direction: row;
+            gap: 30px;
+            flex-wrap: wrap;
+            order: 1;
+        }
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        &__subtitle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            i {
+                width: 15px;
+                font-size: 13px;
+            }
+        }
+
+        &__link {
+            color: $white;
+            font-size: 16px;
+            @include transition(color);
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
 }
